@@ -21,6 +21,20 @@ const stationsData = {
     }
 };
 
+function initMultiStepForm() {
+    document.getElementById("city").addEventListener('change', updateRegions);
+    document.getElementById("region").addEventListener('change', updateStations);
+    document.getElementById("step-1").querySelector("button").addEventListener('click', nextStep);
+    document.getElementById("step-2").querySelector(".back-button").addEventListener('click', prevStep);
+    document.getElementById("step-2").querySelector(".add-station-button").addEventListener('click', addStation);
+    document.getElementById("step-2").querySelector(".submit-button").addEventListener('click', submitForm);
+
+    const citySelect = document.getElementById("city");
+    for (let city in stationsData) {
+        citySelect.innerHTML += `<option value="${city}">${city}</option>`;
+    }
+}
+
 function nextStep() {
     document.getElementById("step-1").classList.remove("active");
     document.getElementById("step-2").classList.add("active");
@@ -96,9 +110,4 @@ function submitForm() {
     // Here you would add the code to send the form data to Google Forms or another backend
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const citySelect = document.getElementById("city");
-    for (let city in stationsData) {
-        citySelect.innerHTML += `<option value="${city}">${city}</option>`;
-    }
-});
+document.addEventListener("DOMContentLoaded", initMultiStepForm);
