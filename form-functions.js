@@ -39,7 +39,7 @@ function updateRegions() {
     regionSelect.innerHTML = '<option value="">選擇區域</option>';
     if (stationsData[city]) {
         for (let region in stationsData[city]) {
-            regionSelect.innerHTML += `<option value=\"${region}\">${region}</option>`;
+            regionSelect.innerHTML += `<option value="${region}">${region}</option>`;
         }
     }
     updateStations();
@@ -52,7 +52,7 @@ function updateStations() {
     stationSelect.innerHTML = '<option value="">選擇站點</option>';
     if (stationsData[city] && stationsData[city][region]) {
         stationsData[city][region].forEach(station => {
-            stationSelect.innerHTML += `<option value=\"${station}\">${station}</option>`;
+            stationSelect.innerHTML += `<option value="${station}">${station}</option>`;
         });
     }
 }
@@ -67,7 +67,7 @@ function addStation() {
         const div = document.createElement("div");
         div.className = "selected-station";
         div.id = `selected-${station}`;
-        div.innerHTML = `${station} <button onclick=\"removeStation('${station}')\">刪除</button>`;
+        div.innerHTML = `${station} <button onclick="removeStation('${station}')">刪除</button>`;
         document.getElementById("selected-stations").appendChild(div);
     }
 }
@@ -99,6 +99,6 @@ function submitForm() {
 document.addEventListener("DOMContentLoaded", () => {
     const citySelect = document.getElementById("city");
     for (let city in stationsData) {
-        citySelect.innerHTML += `<option value=\"${city}\">${city}</option>`;
+        citySelect.innerHTML += `<option value="${city}">${city}</option>`;
     }
 });
